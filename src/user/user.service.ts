@@ -12,7 +12,9 @@ export class UserService {
   }
 
   getAllUsers(): Promise<User[]> {
-    return this.userRepo.find();
+    return this.userRepo.find({
+      relations: ['book']
+    });
   }
 
   addUser(newUser: User): Promise<InsertResult> {
